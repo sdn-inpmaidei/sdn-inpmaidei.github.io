@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -55,6 +56,7 @@
                     transparent 35%
                 ),
                 #080d15;
+
             color: var(--text);
         }
 
@@ -122,30 +124,65 @@
             margin-top: 3px;
         }
 
+        /* =========================
+           MENU KAPSUL PER MENU
+        ========================= */
+
         nav ul {
             list-style: none;
             display: flex;
-            gap: 5px;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        nav ul li {
+            margin: 0;
         }
 
         nav ul li a {
             display: block;
             color: #e8edf2;
             text-decoration: none;
-            padding: 10px 13px;
-            border-radius: 7px;
+            padding: 9px 15px;
+            border-radius: 999px;
             font-size: 14px;
-            transition: .3s;
+            font-weight: 500;
+            white-space: nowrap;
+
+            background: #3a4652;
+            border: 1px solid rgba(210,218,226,.28);
+
+            transition:
+                background .3s ease,
+                color .3s ease,
+                border-color .3s ease,
+                transform .3s ease,
+                box-shadow .3s ease;
         }
 
         nav ul li a:hover {
-            background: #34495e;
-            color: white;
+            background: #66727d;
+            border-color: #89939d;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,.16);
+        }
+
+        /* =========================
+           DARK MODE MENU
+        ========================= */
+
+        body.dark-mode nav ul li a {
+            background: #252f3b;
+            border-color: rgba(190,202,214,.22);
         }
 
         body.dark-mode nav ul li a:hover {
-            background: rgba(120,170,230,.14);
-            box-shadow: 0 0 15px rgba(100,160,230,.08);
+            background: #46525e;
+            border-color: #77838e;
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(100,160,230,.12);
         }
 
         /* =========================
@@ -726,9 +763,20 @@
                 gap: 15px;
             }
 
+            nav {
+                width: 100%;
+            }
+
             nav ul {
+                width: 100%;
                 flex-wrap: wrap;
                 justify-content: center;
+                gap: 6px;
+            }
+
+            nav ul li a {
+                padding: 8px 13px;
+                font-size: 13px;
             }
 
             .hero h1 {
@@ -747,6 +795,19 @@
         }
 
         @media (max-width: 600px) {
+
+            nav {
+                width: 100%;
+            }
+
+            nav ul {
+                gap: 5px;
+            }
+
+            nav ul li a {
+                padding: 7px 11px;
+                font-size: 12px;
+            }
 
             .hero {
                 min-height: 520px;
@@ -808,7 +869,6 @@
         </div>
     </header>
 
-
     <!-- HERO -->
     <section class="hero" id="beranda">
 
@@ -842,7 +902,6 @@
         </div>
 
     </section>
-
 
     <!-- PROFIL -->
     <section class="profile" id="profil">
@@ -892,7 +951,6 @@
         </div>
 
     </section>
-
 
     <!-- AKADEMIK -->
     <section id="akademik">
@@ -945,7 +1003,6 @@
 
     </section>
 
-
     <!-- BERITA -->
     <section class="news" id="berita">
 
@@ -980,7 +1037,6 @@
 
             </div>
 
-
             <div class="news-card">
 
                 <div class="news-image">
@@ -1008,7 +1064,6 @@
 
     </section>
 
-
     <!-- GALERI -->
     <section id="galeri">
 
@@ -1033,7 +1088,6 @@
         </div>
 
     </section>
-
 
     <!-- KONTAK -->
     <section class="contact" id="kontak">
@@ -1084,7 +1138,6 @@
 
     </section>
 
-
     <!-- FOOTER -->
     <footer>
 
@@ -1093,7 +1146,6 @@
         </p>
 
     </footer>
-
 
     <!-- DARK MODE BUTTON -->
     <button
@@ -1106,7 +1158,6 @@
         <span id="themeIcon">🌙</span>
 
     </button>
-
 
     <!-- DARK MODE SCRIPT -->
     <script>
@@ -1122,7 +1173,6 @@
                 "(prefers-color-scheme: dark)"
             ).matches;
 
-
         if (
             savedTheme === "dark" ||
             (!savedTheme && systemDark)
@@ -1131,7 +1181,6 @@
             document.body.classList.add("dark-mode");
 
         }
-
 
         function updateTheme() {
 
@@ -1157,9 +1206,7 @@
 
         }
 
-
         updateTheme();
-
 
         toggle.addEventListener("click", function () {
 
@@ -1181,3 +1228,4 @@
 
 </body>
 </html>
+```
