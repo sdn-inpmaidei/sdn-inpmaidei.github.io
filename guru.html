@@ -12,6 +12,10 @@
         content="Guru dan Tenaga Kependidikan SD Negeri Inpres Maidei.">
 
     <style>
+        /* =========================
+           RESET
+        ========================= */
+
         * {
             margin: 0;
             padding: 0;
@@ -19,12 +23,45 @@
             scroll-behavior: smooth;
         }
 
+        :root {
+            --bg: #f1f3f5;
+            --surface: #ffffff;
+            --surface2: #e3e7eb;
+            --text: #263238;
+            --muted: #68737d;
+            --muted2: #7a858f;
+            --primary: #0b1f3a;
+            --nav-pill: #3a4652;
+            --nav-pill-hover: #66727d;
+            --border: #dce2e8;
+        }
+
         body {
             font-family: Arial, Helvetica, sans-serif;
-            color: #263238;
-            background: #f1f3f5;
+            color: var(--text);
+            background: var(--bg);
             line-height: 1.6;
+            transition: background 0.3s ease, color 0.3s ease;
         }
+
+
+        /* =========================
+           DARK MODE
+        ========================= */
+
+        body.dark-mode {
+            --bg: #0d141c;
+            --surface: #151e27;
+            --surface2: #202b36;
+            --text: #e7edf3;
+            --muted: #aab5c0;
+            --muted2: #929eaa;
+            --primary: #0b1f3a;
+            --nav-pill: #252f3b;
+            --nav-pill-hover: #46525e;
+            --border: #2d3945;
+        }
+
 
         /* =========================
            NAVBAR
@@ -35,36 +72,47 @@
             top: 0;
             z-index: 1000;
             background: #0b1f3a;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.18);
         }
 
         .navbar {
             max-width: 1200px;
-            margin: auto;
             min-height: 75px;
+            margin: auto;
+            padding: 0 25px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 25px;
+            gap: 20px;
         }
+
+
+        /* LOGO */
 
         .logo {
             display: flex;
             align-items: center;
             gap: 12px;
+
             color: white;
             text-decoration: none;
+            flex-shrink: 0;
         }
 
         .logo-icon {
             width: 45px;
             height: 45px;
+
             border-radius: 50%;
+
             background: #d9dee5;
             color: #0b1f3a;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             font-weight: bold;
             font-size: 18px;
         }
@@ -77,63 +125,171 @@
 
         .logo-text small {
             display: block;
+
+            margin-top: 3px;
+
             font-size: 11px;
             font-weight: normal;
             color: #cbd3dc;
-            margin-top: 3px;
         }
+
+
+        /* MENU NAVIGASI */
 
         nav ul {
             list-style: none;
+
             display: flex;
-            gap: 5px;
+            align-items: center;
+            justify-content: center;
+
+            gap: 8px;
+        }
+
+        nav ul li {
+            margin: 0;
         }
 
         nav ul li a {
             display: block;
+
             color: #e8edf2;
             text-decoration: none;
-            padding: 10px 13px;
-            border-radius: 7px;
+
+            padding: 9px 15px;
+
+            border-radius: 999px;
+
             font-size: 14px;
+            font-weight: 500;
+
+            white-space: nowrap;
+
+            background: #3a4652;
+            border: 1px solid rgba(210, 218, 226, 0.28);
+
+            transition:
+                background 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background: #66727d;
+            border-color: #89939d;
+            color: #ffffff;
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.16);
+        }
+
+        nav ul li a.active {
+            background: #66727d;
+            border-color: #89939d;
+            color: #ffffff;
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+        }
+
+        body.dark-mode nav ul li a {
+            background: #252f3b;
+            border-color: rgba(190, 202, 214, 0.22);
+        }
+
+        body.dark-mode nav ul li a:hover,
+        body.dark-mode nav ul li a.active {
+            background: #46525e;
+            border-color: #77838e;
+            color: #ffffff;
+
+            box-shadow: 0 0 15px rgba(100, 160, 230, 0.12);
+        }
+
+
+        /* =========================
+           DARK MODE BUTTON
+        ========================= */
+
+        .theme-toggle {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+
+            width: 48px;
+            height: 48px;
+
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+
+            background: #0b1f3a;
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22);
+
+            z-index: 999;
+
             transition: 0.3s;
         }
 
-        nav ul li a:hover,
-        nav ul li a.active {
+        .theme-toggle:hover {
+            transform: translateY(-3px);
             background: #34495e;
-            color: white;
         }
 
+
         /* =========================
-           HERO HALAMAN GURU
+           HERO
         ========================= */
 
         .page-hero {
             background:
                 linear-gradient(
-                    rgba(11,31,58,0.94),
-                    rgba(35,49,65,0.94)
+                    rgba(11, 31, 58, 0.96),
+                    rgba(35, 49, 65, 0.96)
                 );
 
             color: white;
             text-align: center;
+
             padding: 85px 20px;
+        }
+
+        .page-hero .container {
+            max-width: 900px;
         }
 
         .page-hero .badge {
             display: inline-block;
+
             padding: 7px 18px;
-            border: 1px solid rgba(255,255,255,0.35);
+
+            border: 1px solid rgba(255, 255, 255, 0.35);
             border-radius: 30px;
-            background: rgba(255,255,255,0.08);
+
+            background: rgba(255, 255, 255, 0.08);
+
             margin-bottom: 18px;
+
             font-size: 13px;
+            letter-spacing: 0.5px;
         }
 
         .page-hero h1 {
             font-size: 44px;
-            margin-bottom: 12px;
+            line-height: 1.2;
+
+            margin-bottom: 14px;
         }
 
         .page-hero h1 span {
@@ -143,12 +299,14 @@
         .page-hero p {
             max-width: 700px;
             margin: auto;
+
             color: #dce2e8;
             font-size: 17px;
         }
 
+
         /* =========================
-           CONTENT
+           CONTAINER & SECTION
         ========================= */
 
         .container {
@@ -166,14 +324,21 @@
         }
 
         .section-title h2 {
-            color: #0b1f3a;
+            color: var(--primary);
+
             font-size: 32px;
+
             margin-bottom: 10px;
         }
 
-        .section-title p {
-            color: #68737d;
+        body.dark-mode .section-title h2 {
+            color: #dce4ec;
         }
+
+        .section-title p {
+            color: var(--muted);
+        }
+
 
         /* =========================
            KARTU GURU
@@ -181,43 +346,92 @@
 
         .guru-grid {
             display: grid;
+
             grid-template-columns: repeat(3, 1fr);
+
             gap: 25px;
         }
 
         .guru-card {
-            background: white;
-            border-radius: 14px;
+            background: var(--surface);
+
+            border-radius: 16px;
+
             overflow: hidden;
-            border: 1px solid #e0e4e8;
-            box-shadow: 0 5px 18px rgba(11,31,58,0.06);
-            transition: 0.3s;
+
+            border: 1px solid var(--border);
+
+            box-shadow:
+                0 5px 18px rgba(11, 31, 58, 0.07);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
         }
 
         .guru-card:hover {
             transform: translateY(-7px);
-            box-shadow: 0 14px 30px rgba(11,31,58,0.14);
+
+            box-shadow:
+                0 15px 32px rgba(11, 31, 58, 0.14);
+
+            border-color: #b9c2ca;
         }
+
 
         /* FOTO GURU */
 
-        .guru-photo {
-            height: 260px;
+        .guru-photo,
+        .guru-foto {
+            height: 230px;
+
             background: #dce2e8;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             color: #0b1f3a;
-            font-size: 65px;
-            font-weight: bold;
+
+            overflow: hidden;
         }
 
-        .guru-photo img {
+        .guru-photo span {
+            font-size: 65px;
+        }
+
+        .guru-photo img,
+        .guru-foto img {
             width: 100%;
             height: 100%;
+
             object-fit: cover;
+
             display: block;
         }
+
+
+        /* FOTO BULAT */
+
+        .guru-foto.circle-photo {
+            height: 230px;
+        }
+
+        .guru-foto.circle-photo img {
+            width: 125px !important;
+            height: 125px !important;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 5px solid #ffffff;
+
+            box-shadow:
+                0 5px 18px rgba(0, 0, 0, 0.18);
+        }
+
 
         /* INFORMASI GURU */
 
@@ -227,82 +441,145 @@
         }
 
         .guru-info h3 {
-            color: #0b1f3a;
-            font-size: 20px;
-            margin-bottom: 5px;
+            color: var(--primary);
+
+            font-size: 19px;
+
+            line-height: 1.35;
+
+            margin-bottom: 6px;
+        }
+
+        body.dark-mode .guru-info h3 {
+            color: #e5ebf1;
+        }
+
+        .guru-info h5 {
+            color: var(--muted);
+
+            font-size: 12px;
+            font-weight: normal;
+
+            margin-bottom: 12px;
         }
 
         .guru-info .jabatan {
-            color: #68737d;
+            color: var(--muted);
+
             font-size: 14px;
-            margin-bottom: 15px;
+
+            margin-bottom: 12px;
         }
 
         .guru-info .line {
             width: 45px;
             height: 3px;
-            background: #0b1f3a;
-            margin: 0 auto 15px;
+
+            background: var(--primary);
+
+            margin: 0 auto 14px;
+
             border-radius: 5px;
         }
 
         .guru-info p {
-            color: #7a858f;
+            color: var(--muted2);
+
             font-size: 13px;
         }
+
+
+        /* =========================
+           INFORMASI
+        ========================= */
+
+        .info-box {
+            background: var(--surface2);
+
+            border-left: 5px solid #0b1f3a;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            margin-top: 45px;
+        }
+
+        .info-box h3 {
+            color: var(--primary);
+
+            margin-bottom: 8px;
+        }
+
+        body.dark-mode .info-box h3 {
+            color: #e1e8ef;
+        }
+
+        .info-box p {
+            color: var(--muted);
+
+            font-size: 14px;
+        }
+
 
         /* =========================
            TENAGA KEPENDIDIKAN
         ========================= */
 
         .staff-section {
-            background: white;
+            background: var(--surface);
+
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
         .staff-grid {
             display: grid;
+
             grid-template-columns: repeat(3, 1fr);
+
             gap: 22px;
         }
 
         .staff-card {
-            background: #f1f3f5;
+            background: var(--bg);
+
             padding: 25px;
-            border-radius: 12px;
+
+            border-radius: 14px;
+
+            border: 1px solid var(--border);
+
             border-left: 4px solid #0b1f3a;
+
+            transition: 0.3s;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 10px 25px rgba(11, 31, 58, 0.09);
         }
 
         .staff-card h3 {
-            color: #0b1f3a;
+            color: var(--primary);
+
             margin-bottom: 5px;
+
+            font-size: 17px;
+        }
+
+        body.dark-mode .staff-card h3 {
+            color: #e3eaf1;
         }
 
         .staff-card p {
-            color: #68737d;
+            color: var(--muted);
+
             font-size: 14px;
         }
 
-        /* =========================
-           INFO
-        ========================= */
-
-        .info-box {
-            background: #e3e7eb;
-            border-left: 5px solid #0b1f3a;
-            border-radius: 10px;
-            padding: 25px;
-            margin-top: 40px;
-        }
-
-        .info-box h3 {
-            color: #0b1f3a;
-            margin-bottom: 8px;
-        }
-
-        .info-box p {
-            color: #59636d;
-            font-size: 14px;
-        }
 
         /* =========================
            FOOTER
@@ -310,38 +587,92 @@
 
         footer {
             background: #071426;
+
             color: #aeb8c2;
+
             text-align: center;
+
             padding: 25px 20px;
+
             font-size: 13px;
         }
 
+
         /* =========================
-           RESPONSIVE
+           RESPONSIVE TABLET
         ========================= */
 
-        @media (max-width: 900px) {
+        @media (max-width: 1000px) {
 
             .navbar {
-                flex-direction: column;
                 padding: 15px 20px;
-                gap: 15px;
             }
 
             nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
+                gap: 6px;
+            }
+
+            nav ul li a {
+                padding: 8px 12px;
+                font-size: 13px;
             }
 
             .guru-grid,
             .staff-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+        }
+
+
+        /* =========================
+           RESPONSIVE HP
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            .navbar {
+                min-height: auto;
+
+                flex-direction: column;
+
+                padding: 15px 20px;
+
+                gap: 15px;
+            }
+
+            nav {
+                width: 100%;
+            }
+
+            nav ul {
+                width: 100%;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 6px;
+            }
+
+            nav ul li a {
+                padding: 8px 12px;
+
+                font-size: 12px;
+            }
+
+            .page-hero {
+                padding: 65px 20px;
+            }
 
             .page-hero h1 {
-                font-size: 38px;
+                font-size: 34px;
+            }
+
+            .page-hero p {
+                font-size: 15px;
             }
         }
+
 
         @media (max-width: 600px) {
 
@@ -350,20 +681,39 @@
                 grid-template-columns: 1fr;
             }
 
-            .page-hero {
-                padding: 65px 20px;
+            section {
+                padding: 55px 16px;
+            }
+
+            .section-title {
+                margin-bottom: 32px;
+            }
+
+            .section-title h2 {
+                font-size: 27px;
+            }
+
+            .guru-photo,
+            .guru-foto {
+                height: 250px;
             }
 
             .page-hero h1 {
-                font-size: 31px;
+                font-size: 29px;
             }
 
-            .page-hero p {
-                font-size: 15px;
+            .page-hero .badge {
+                font-size: 11px;
             }
 
-            .guru-photo {
-                height: 280px;
+            .theme-toggle {
+                width: 44px;
+                height: 44px;
+
+                right: 15px;
+                bottom: 15px;
+
+                font-size: 18px;
             }
         }
     </style>
@@ -486,7 +836,9 @@
 
             <div class="section-title">
 
-                <h2>Daftar Guru</h2>
+                <h2>
+                    Daftar Guru
+                </h2>
 
                 <p>
                     Guru dan tenaga pendidik SD Negeri Inpres Maidei
@@ -498,7 +850,7 @@
             <div class="guru-grid">
 
 
-                <!-- kepsek -->
+                <!-- KEPALA SEKOLAH -->
 
                 <div class="guru-card">
 
@@ -523,60 +875,88 @@
                         </p>
 
                     </div>
-                    
-                     <!-- GURU 1 -->
-                    
+
                 </div>
-                 <div class="guru-card">
-                    <div class="guru-foto" style="text-align:center;">
-                        <img src="#" alt="Minatin"
-                        style="width:90px !important; height:90px !important; object-fit:cover; border-radius:50%">
+
+
+                <!-- GURU 1 -->
+
+                <div class="guru-card">
+
+                    <div class="guru-foto circle-photo">
+
+                        <img src="#" alt="Minatin">
+
                     </div>
+
                     <div class="guru-info">
+
                         <h3>
                             Minatin Widiyawati, S.Pd.I
                         </h3>
-                        <h5>NIP: 198609282009092001</h5>
+
+                        <h5>
+                            NIP: 198609282009092001
+                        </h5>
+
                         <div class="line"></div>
+
                         <div class="jabatan">
                             Guru Kelas I
                         </div>
+
                         <p>
                             SD Negeri Inpres Maidei
                         </p>
+
                     </div>
-                 </div>
- <!-- GURU 2 -->
-                    
+
                 </div>
-                 <div class="guru-card">
-                    <div class="guru-foto" style="text-align:center;">
-                        <img src="irma.jpg" alt="Irma"
-                        style="width:90px !important; height:90px !important; object-fit:cover; border-radius:50%">
+
+
+                <!-- GURU 2 -->
+
+                <div class="guru-card">
+
+                    <div class="guru-foto circle-photo">
+
+                        <img src="irma.jpg" alt="Irma">
+
                     </div>
+
                     <div class="guru-info">
+
                         <h3>
                             Irma Indah Lestari, S.Pd.I
                         </h3>
-                        <h5>NIP: 199009062024062001</h5>
+
+                        <h5>
+                            NIP: 199009062024062001
+                        </h5>
+
                         <div class="line"></div>
+
                         <div class="jabatan">
                             Guru Kelas II
                         </div>
+
                         <p>
                             SD Negeri Inpres Maidei
                         </p>
+
                     </div>
-                 </div>
+
+                </div>
 
 
                 <!-- GURU 3 -->
 
                 <div class="guru-card">
 
-                    <div class="guru-foto" style="text-align:center;">
-                        <img src="mujiono.jpg" alt="Mujiono"
-                        style="width:90px !important; height:90px !important; object-fit:cover; border-radius:50%">
+                    <div class="guru-foto circle-photo">
+
+                        <img src="mujiono.jpg" alt="Mujiono">
+
                     </div>
 
                     <div class="guru-info">
@@ -584,7 +964,10 @@
                         <h3>
                             Mujiono
                         </h3>
-                        <h5>NIP: 197108102001031003</h5>
+
+                        <h5>
+                            NIP: 197108102001031003
+                        </h5>
 
                         <div class="line"></div>
 
@@ -634,9 +1017,10 @@
 
                 <div class="guru-card">
 
-                    <div class="guru-foto" style="text-align:center;">
-                        <img src="hengky.jpg" alt="Hengky"
-                        style="width:90px !important; height:90px !important; object-fit:cover; border-radius:50%">
+                    <div class="guru-foto circle-photo">
+
+                        <img src="hengky.jpg" alt="Hengky">
+
                     </div>
 
                     <div class="guru-info">
@@ -644,7 +1028,10 @@
                         <h3>
                             Hengky R. Ady Putra, S.Pd.Gr
                         </h3>
-                        <h5>NIP: 199811172024211008</h5>
+
+                        <h5>
+                            NIP: 199811172024211008
+                        </h5>
 
                         <div class="line"></div>
 
@@ -718,10 +1105,13 @@
 
                 </div>
 
+
             </div>
 
 
-            <!-- INFORMASI -->
+            <!-- =========================
+                 INFORMASI
+            ========================= -->
 
             <div class="info-box">
 
@@ -820,13 +1210,81 @@
     <footer>
 
         <p>
-            © 2026 Hengky R. 
+            © 2026 Hengky R.
             Semua hak cipta dilindungi.
         </p>
 
     </footer>
 
 
+    <!-- =========================
+         DARK MODE BUTTON
+    ========================= -->
+
+    <button
+        class="theme-toggle"
+        id="themeToggle"
+        aria-label="Ganti tema"
+        title="Ganti tema">
+        🌙
+    </button>
+
+
+    <!-- =========================
+         JAVASCRIPT DARK MODE
+    ========================= -->
+
+    <script>
+
+        const themeToggle = document.getElementById("themeToggle");
+
+        const savedTheme = localStorage.getItem("sdmaidei-theme");
+
+        if (savedTheme === "dark") {
+
+            document.body.classList.add("dark-mode");
+
+            themeToggle.textContent = "☀️";
+
+        } else {
+
+            themeToggle.textContent = "🌙";
+
+        }
+
+
+        themeToggle.addEventListener("click", function () {
+
+            document.body.classList.toggle("dark-mode");
+
+            const isDark =
+                document.body.classList.contains("dark-mode");
+
+            if (isDark) {
+
+                localStorage.setItem(
+                    "sdmaidei-theme",
+                    "dark"
+                );
+
+                themeToggle.textContent = "☀️";
+
+            } else {
+
+                localStorage.setItem(
+                    "sdmaidei-theme",
+                    "light"
+                );
+
+                themeToggle.textContent = "🌙";
+
+            }
+
+        });
+
+    </script>
+
 </body>
 
 </html>
+```
