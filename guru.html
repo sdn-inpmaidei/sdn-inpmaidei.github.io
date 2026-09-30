@@ -1,210 +1,436 @@
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guru & Tenaga Kependidikan - SD Negeri Inpres Maidei</title>
+
+    <title>Guru & Tenaga Kependidikan | SD Negeri Inpres Maidei</title>
+
+    <meta name="description"
+        content="Guru dan Tenaga Kependidikan SD Negeri Inpres Maidei.">
 
     <style>
-        :root {
-            --navy: #0b1f3a;
-            --navy-dark: #07162a;
-            --blue: #163b68;
-            --gray: #e5e7eb;
-            --gray-dark: #cbd5e1;
-            --white: #ffffff;
-            --text: #1e293b;
-            --card: #ffffff;
-            --bg: #f1f5f9;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-        }
+
+        /* =========================
+           RESET
+        ========================= */
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        html {
             scroll-behavior: smooth;
         }
 
-        body {
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            transition: 0.3s;
+        :root {
+            --bg: #f1f3f5;
+            --surface: #ffffff;
+            --surface2: #e3e7eb;
+            --text: #263238;
+            --muted: #68737d;
+            --muted2: #7a858f;
+            --primary: #0b1f3a;
+            --nav-pill: #3a4652;
+            --nav-pill-hover: #66727d;
+            --border: #dce2e8;
         }
 
-        /* ================= NAVBAR ================= */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+
+        /* =========================
+           DARK MODE
+        ========================= */
+
+        body.dark-mode {
+            --bg: #0d141c;
+            --surface: #151e27;
+            --surface2: #202b36;
+            --text: #e7edf3;
+            --muted: #aab5c0;
+            --muted2: #929eaa;
+            --primary: #0b1f3a;
+            --nav-pill: #252f3b;
+            --nav-pill-hover: #46525e;
+            --border: #2d3945;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
 
         header {
-            background: var(--navy);
-            padding: 15px 6%;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.18);
+            background: #0b1f3a;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.18);
         }
 
         .navbar {
             max-width: 1200px;
+            min-height: 75px;
             margin: auto;
+            padding: 0 25px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 25px;
+            gap: 20px;
         }
+
+
+        /* LOGO */
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
             color: white;
-            font-size: 20px;
-            font-weight: 700;
             text-decoration: none;
-            white-space: nowrap;
+            flex-shrink: 0;
         }
 
-        nav ul {
-            list-style: none;
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+
+            border-radius: 50%;
+
+            background: #d9dee5;
+            color: #0b1f3a;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
+
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            font-size: 17px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .logo-text small {
+            display: block;
+
+            margin-top: 3px;
+
+            font-size: 11px;
+            font-weight: normal;
+            color: #cbd3dc;
+        }
+
+
+        /* MENU NAVIGASI */
+
+        nav ul {
+            list-style: none;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 8px;
+        }
+
+        nav ul li {
+            margin: 0;
         }
 
         nav ul li a {
             display: block;
-            color: #e2e8f0;
+
+            color: #e8edf2;
             text-decoration: none;
-            background: rgba(255, 255, 255, 0.12);
-            padding: 8px 16px;
-            border-radius: 30px;
+
+            padding: 9px 15px;
+
+            border-radius: 999px;
+
             font-size: 14px;
-            transition: 0.3s ease;
+            font-weight: 500;
+
+            white-space: nowrap;
+
+            background: #3a4652;
+            border: 1px solid rgba(210, 218, 226, 0.28);
+
+            transition:
+                background 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
         }
 
         nav ul li a:hover {
-            background: white;
-            color: var(--navy);
+            background: #66727d;
+            border-color: #89939d;
+            color: #ffffff;
+
             transform: translateY(-2px);
+
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.16);
         }
 
-        .theme-btn {
-            border: none;
-            background: #334155;
-            color: white;
-            width: 38px;
-            height: 38px;
+        nav ul li a.active {
+            background: #66727d;
+            border-color: #89939d;
+            color: #ffffff;
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+        }
+
+        body.dark-mode nav ul li a {
+            background: #252f3b;
+            border-color: rgba(190, 202, 214, 0.22);
+        }
+
+        body.dark-mode nav ul li a:hover,
+        body.dark-mode nav ul li a.active {
+            background: #46525e;
+            border-color: #77838e;
+            color: #ffffff;
+
+            box-shadow: 0 0 15px rgba(100, 160, 230, 0.12);
+        }
+
+
+        /* =========================
+           DARK MODE BUTTON
+        ========================= */
+
+        .theme-toggle {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+
+            width: 48px;
+            height: 48px;
+
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50%;
+
+            background: #0b1f3a;
+            color: white;
+
             cursor: pointer;
-            font-size: 17px;
+
+            font-size: 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22);
+
+            z-index: 999;
+
             transition: 0.3s;
         }
 
-        .theme-btn:hover {
-            transform: rotate(15deg) scale(1.05);
+        .theme-toggle:hover {
+            transform: translateY(-3px);
+            background: #34495e;
         }
 
-        /* ================= HERO ================= */
 
-        .hero {
-            background: linear-gradient(
-                135deg,
-                var(--navy),
-                var(--blue)
-            );
+        /* =========================
+           HERO
+        ========================= */
+
+        .page-hero {
+            background:
+                linear-gradient(
+                    rgba(11, 31, 58, 0.96),
+                    rgba(35, 49, 65, 0.96)
+                );
+
             color: white;
             text-align: center;
-            padding: 70px 20px;
+
+            padding: 85px 20px;
         }
 
-        .hero h1 {
-            font-size: clamp(30px, 5vw, 48px);
-            margin-bottom: 10px;
+        .page-hero .container {
+            max-width: 900px;
         }
 
-        .hero p {
+        .page-hero .badge {
+            display: inline-block;
+
+            padding: 7px 18px;
+
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 30px;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            margin-bottom: 18px;
+
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+
+        .page-hero h1 {
+            font-size: 44px;
+            line-height: 1.2;
+
+            margin-bottom: 14px;
+        }
+
+        .page-hero h1 span {
+            color: #cbd3dc;
+        }
+
+        .page-hero p {
+            max-width: 700px;
+            margin: auto;
+
+            color: #dce2e8;
             font-size: 17px;
-            color: #dbeafe;
         }
 
-        /* ================= CONTENT ================= */
+
+        /* =========================
+           CONTAINER & SECTION
+        ========================= */
 
         .container {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 0 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        section {
+            padding: 70px 20px;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 45px;
         }
 
         .section-title h2 {
-            color: var(--navy);
-            font-size: 30px;
-            margin-bottom: 8px;
+            color: var(--primary);
+
+            font-size: 32px;
+
+            margin-bottom: 10px;
+        }
+
+        body.dark-mode .section-title h2 {
+            color: #dce4ec;
         }
 
         .section-title p {
-            color: #64748b;
+            color: var(--muted);
         }
 
-        /* ================= GURU CARD ================= */
+
+        /* =========================
+           KARTU GURU
+        ========================= */
 
         .guru-grid {
             display: grid;
+
             grid-template-columns: repeat(3, 1fr);
+
             gap: 25px;
         }
 
         .guru-card {
-            background: var(--card);
-            border-radius: 20px;
+            background: var(--surface);
+
+            border-radius: 16px;
+
             overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: 0.3s ease;
-            border: 1px solid rgba(148, 163, 184, 0.18);
+
+            border: 1px solid var(--border);
+
+            box-shadow:
+                0 5px 18px rgba(11, 31, 58, 0.07);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
         }
 
         .guru-card:hover {
             transform: translateY(-7px);
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+
+            box-shadow:
+                0 15px 32px rgba(11, 31, 58, 0.14);
+
+            border-color: #b9c2ca;
         }
 
-        /* Area foto */
+
+        /* FOTO GURU */
+
         .guru-photo,
         .guru-foto {
             height: 230px;
+
+            background: #dce2e8;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(
-                135deg,
-                #dbeafe,
-                #cbd5e1
-            );
+
+            color: #0b1f3a;
+
+            overflow: hidden;
         }
 
-        /* SEMUA FOTO, TERMASUK KEPALA SEKOLAH, BULAT */
+        .guru-photo span {
+            font-size: 65px;
+        }
+
         .guru-photo img,
         .guru-foto img {
-            width: 135px !important;
-            height: 135px !important;
-            min-width: 135px;
-            min-height: 135px;
-            max-width: 135px;
-            max-height: 135px;
+            width: 100%;
+            height: 100%;
+
             object-fit: cover;
-            border-radius: 50% !important;
-            border: 5px solid white;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+
             display: block;
         }
+
+
+        /* FOTO BULAT */
+
+        .guru-foto.circle-photo img {
+            width: 125px !important;
+            height: 125px !important;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 5px solid #ffffff;
+
+            box-shadow:
+                0 5px 18px rgba(0, 0, 0, 0.18);
+        }
+
+
+        /* INFORMASI GURU */
 
         .guru-info {
             padding: 22px;
@@ -212,450 +438,989 @@
         }
 
         .guru-info h3 {
-            color: var(--navy);
+            color: var(--primary);
+
             font-size: 19px;
+
+            line-height: 1.35;
+
             margin-bottom: 6px;
         }
 
-        .jabatan {
-            display: inline-block;
-            background: #e2e8f0;
-            color: #334155;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
+        body.dark-mode .guru-info h3 {
+            color: #e5ebf1;
+        }
+
+        .guru-info h5 {
+            color: var(--muted);
+
+            font-size: 12px;
+            font-weight: normal;
+
             margin-bottom: 12px;
         }
 
-        .guru-info p {
-            color: #64748b;
+        .guru-info .jabatan {
+            color: var(--muted);
+
             font-size: 14px;
-            margin: 3px 0;
+
+            margin-bottom: 12px;
         }
 
-        /* ================= SECTION TENAGA KEPENDIDIKAN ================= */
+        .guru-info .line {
+            width: 45px;
+            height: 3px;
+
+            background: var(--primary);
+
+            margin: 0 auto 14px;
+
+            border-radius: 5px;
+        }
+
+        .guru-info p {
+            color: var(--muted2);
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           INFORMASI
+        ========================= */
+
+        .info-box {
+            background: var(--surface2);
+
+            border-left: 5px solid #0b1f3a;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            margin-top: 45px;
+        }
+
+        .info-box h3 {
+            color: var(--primary);
+
+            margin-bottom: 8px;
+        }
+
+        body.dark-mode .info-box h3 {
+            color: #e1e8ef;
+        }
+
+        .info-box p {
+            color: var(--muted);
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           TENAGA KEPENDIDIKAN
+        ========================= */
 
         .staff-section {
-            margin-top: 70px;
+            background: var(--surface);
+
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
-        /* ================= FOOTER ================= */
+        .staff-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+        .staff-card {
+            background: var(--bg);
+
+            padding: 25px;
+
+            border-radius: 14px;
+
+            border: 1px solid var(--border);
+
+            border-left: 4px solid #0b1f3a;
+
+            transition: 0.3s;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 10px 25px rgba(11, 31, 58, 0.09);
+        }
+
+        .staff-card h3 {
+            color: var(--primary);
+
+            margin-bottom: 5px;
+
+            font-size: 17px;
+        }
+
+        body.dark-mode .staff-card h3 {
+            color: #e3eaf1;
+        }
+
+        .staff-card p {
+            color: var(--muted);
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
-            margin-top: 70px;
-            background: var(--navy-dark);
-            color: #cbd5e1;
+            background: #071426;
+
+            color: #aeb8c2;
+
             text-align: center;
-            padding: 30px 20px;
+
+            padding: 25px 20px;
+
+            font-size: 13px;
         }
 
-        footer strong {
-            color: white;
-        }
 
-        /* ================= DARK MODE ================= */
-
-        body.dark {
-            --bg: #07111f;
-            --text: #e2e8f0;
-            --card: #0f1d31;
-            --gray: #1e293b;
-            --gray-dark: #334155;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-        }
-
-        body.dark .section-title h2,
-        body.dark .guru-info h3 {
-            color: #bfdbfe;
-        }
-
-        body.dark .section-title p,
-        body.dark .guru-info p {
-            color: #94a3b8;
-        }
-
-        body.dark .jabatan {
-            background: #1e293b;
-            color: #cbd5e1;
-        }
-
-        body.dark .guru-photo,
-        body.dark .guru-foto {
-            background: linear-gradient(
-                135deg,
-                #172554,
-                #1e293b
-            );
-        }
-
-        /* ================= RESPONSIVE ================= */
+        /* =========================
+           RESPONSIVE
+        ========================= */
 
         @media (max-width: 1000px) {
+
             .navbar {
-                flex-direction: column;
+                padding: 15px 20px;
             }
 
-            .guru-grid {
+            nav ul {
+                gap: 6px;
+            }
+
+            nav ul li a {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+
+            .guru-grid,
+            .staff-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (max-width: 650px) {
-            header {
-                padding: 12px 15px;
+
+        @media (max-width: 750px) {
+
+            .navbar {
+                min-height: auto;
+
+                flex-direction: column;
+
+                padding: 15px 20px;
+
+                gap: 15px;
             }
 
-            .logo {
-                font-size: 17px;
+            nav {
+                width: 100%;
             }
 
             nav ul {
-                gap: 7px;
+                width: 100%;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 6px;
             }
 
             nav ul li a {
-                padding: 7px 12px;
+                padding: 8px 12px;
+
                 font-size: 12px;
             }
 
-            .hero {
-                padding: 55px 15px;
+            .page-hero {
+                padding: 65px 20px;
             }
 
-            .hero h1 {
-                font-size: 30px;
+            .page-hero h1 {
+                font-size: 34px;
             }
 
-            .hero p {
-                font-size: 14px;
+            .page-hero p {
+                font-size: 15px;
             }
+        }
 
-            .guru-grid {
+
+        @media (max-width: 600px) {
+
+            .guru-grid,
+            .staff-grid {
                 grid-template-columns: 1fr;
             }
 
-            .container {
-                margin-top: 35px;
+            section {
+                padding: 55px 16px;
+            }
+
+            .section-title {
+                margin-bottom: 32px;
             }
 
             .section-title h2 {
-                font-size: 25px;
+                font-size: 27px;
+            }
+
+            .guru-photo,
+            .guru-foto {
+                height: 250px;
+            }
+
+            .page-hero h1 {
+                font-size: 29px;
+            }
+
+            .page-hero .badge {
+                font-size: 11px;
+            }
+
+            .theme-toggle {
+                width: 44px;
+                height: 44px;
+
+                right: 15px;
+                bottom: 15px;
+
+                font-size: 18px;
             }
         }
+
     </style>
 </head>
 
+
 <body>
 
-    <!-- ================= NAVBAR ================= -->
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
 
     <header>
+
         <div class="navbar">
 
             <a href="index.html" class="logo">
-                SD Negeri Inpres Maidei
+
+                <div class="logo-icon">
+                    SD
+                </div>
+
+                <div class="logo-text">
+
+                    SD NEGERI INPRES MAIDEI
+
+                    <small>
+                        Sekolah Dasar Negeri
+                    </small>
+
+                </div>
+
             </a>
 
+
             <nav>
+
                 <ul>
-                    <li><a href="index.html">Beranda</a></li>
-                    <li><a href="guru.html">Guru</a></li>
-                    <li><a href="index.html#profil">Profil</a></li>
-                    <li><a href="index.html#akademik">Akademik</a></li>
-                    <li><a href="index.html#berita">Berita</a></li>
-                    <li><a href="index.html#galeri">Galeri</a></li>
-                    <li><a href="index.html#kontak">Kontak</a></li>
+
+                    <li>
+                        <a href="index.html">
+                            Beranda
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="guru.html" class="active">
+                            Guru
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#profil">
+                            Profil
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#akademik">
+                            Akademik
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#berita">
+                            Berita
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#galeri">
+                            Galeri
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#kontak">
+                            Kontak
+                        </a>
+                    </li>
+
                 </ul>
+
             </nav>
 
-            <button class="theme-btn" onclick="toggleTheme()" title="Ganti tema">
-                🌙
-            </button>
-
         </div>
+
     </header>
 
 
-    <!-- ================= HERO ================= -->
+    <!-- =========================
+         HERO
+    ========================= -->
 
-    <section class="hero">
-        <h1>Guru & Tenaga Kependidikan</h1>
-        <p>SD Negeri Inpres Maidei</p>
+    <section class="page-hero">
+
+        <div class="container">
+
+            <div class="badge">
+                TENAGA PENDIDIK
+            </div>
+
+            <h1>
+                Guru & <span>Tenaga Kependidikan</span>
+            </h1>
+
+            <p>
+                Mengenal para pendidik dan tenaga kependidikan
+                SD Negeri Inpres Maidei yang berperan dalam
+                mendukung proses pendidikan peserta didik.
+            </p>
+
+        </div>
+
     </section>
 
 
-    <!-- ================= GURU ================= -->
+    <!-- =========================
+         DAFTAR GURU
+    ========================= -->
 
-    <main class="container">
+    <section>
 
-        <div class="section-title">
-            <h2>Tenaga Pendidik</h2>
-            <p>Daftar guru SD Negeri Inpres Maidei</p>
-        </div>
-
-        <div class="guru-grid">
-
-            <!-- KEPALA SEKOLAH -->
-            <div class="guru-card">
-
-                <div class="guru-photo">
-                    <img src="kepsek.jpg" alt="Kepala Sekolah">
-                </div>
-
-                <div class="guru-info">
-                    <h3>Deni Eko Wahyu, S.Pd,.M.Pd</h3>
-                    <span class="jabatan">Kepala Sekolah</span>
-                    <p><strong>NIP:</strong> 198406202021004005</p>
-                </div>
-
-            </div>
-
-
-            <!-- KELAS I -->
-            <div class="guru-card">
-
-                <div class="guru-foto">
-                    <img src="minatin.jpg" alt="Minatin Widiyawati">
-                </div>
-
-                <div class="guru-info">
-                    <h3>Minatin Widiyawati, S.Pd.I</h3>
-                    <span class="jabatan">Guru Kelas I</span>
-                    <p><strong>NIP:</strong> 198609282009092001</p>
-                </div>
-
-            </div>
-
-
-            <!-- KELAS II -->
-            <div class="guru-card">
-
-                <div class="guru-foto">
-                    <img src="irma.jpg" alt="Irma Indah Lestari">
-                </div>
-
-                <div class="guru-info">
-                    <h3>Irma Indah Lestari, S.Pd.I</h3>
-                    <span class="jabatan">Guru Kelas II</span>
-                    <p><strong>NIP:</strong> 199009062024062001</p>
-                </div>
-
-            </div>
-
-
-            <!-- KELAS III -->
-            <div class="guru-card">
-
-                <div class="guru-foto">
-                    <img src="mujiono.jpg" alt="Mujiono">
-                </div>
-
-                <div class="guru-info">
-                    <h3>Mujiono</h3>
-                    <span class="jabatan">Guru Kelas III</span>
-                    <p><strong>NIP:</strong> 197108102001031003</p>
-                </div>
-
-            </div>
-
-
-            <!-- KELAS IV -->
-            <div class="guru-card">
-
-                <div class="guru-foto">
-                    <img src="ayu.jpg" alt="Ayu Wijiningsih">
-                </div>
-
-                <div class="guru-info">
-                    <h3>Ayu Wijiningsih, S.Pd.Gr</h3>
-                    <span class="jabatan">Guru Kelas IV</span>
-                    <p><strong>NIP:</strong> -</p>
-                </div>
-
-            </div>
-
-
-            <!-- KELAS V -->
-            <div class="guru-card">
-
-                <div class="guru-foto">
-                    <img src="oktania.jpg" alt="Oktania Ilma Abriyanti">
-                </div>
-
-                <div class="guru-info">
-                    <h3>Oktania Ilma Abriyanti, S.Pd.Gr</h3>
-                    <span class="jabatan">Guru Kelas V</span>
-                    <p><strong>NIP:</strong> 199410052024212041</p>
-                </div>
-
-            </div>
-
-
-            <!-- KELAS VI -->
-            <div class="guru-card">
-
-                <div class="guru-foto">
-                    <img src="hengky.jpg" alt="Hengky R. Ady Putra">
-                </div>
-
-                <div class="guru-info">
-                    <h3>Hengky R. Ady Putra, S.Pd.Gr</h3>
-                    <span class="jabatan">Guru Kelas VI</span>
-                    <p><strong>NIP:</strong> 199811172024211008</p>
-                </div>
-
-            </div>
-
-
-            <!-- GURU PAI -->
-            <div class="guru-card">
-
-                <div class="guru-foto">
-                    <img src="mia.jpg" alt="Mia Widiastuti">
-                </div>
-
-                <div class="guru-info">
-                    <h3>Mia Widiastuti, S.Pd.Gr</h3>
-                    <span class="jabatan">Guru Mapel PAI</span>
-                    <p><strong>NIP:</strong> 199412222021062001</p>
-                </div>
-
-            </div>
-
-
-            <!-- GURU PAK -->
-            <div class="guru-card">
-
-                <div class="guru-foto">
-                    <img src="densemina.jpg" alt="Densemina Robaha">
-                </div>
-
-                <div class="guru-info">
-                    <h3>Densemina Robaha, S.Pd</h3>
-                    <span class="jabatan">Guru Mapel PAK</span>
-                    <p><strong>NIP:</strong> 199101152024212042</p>
-                </div>
-
-            </div>
-
-
-            <!-- GURU BAHASA INGGRIS -->
-            <div class="guru-card">
-
-                <div class="guru-foto">
-                    <img src="juwariyah.jpg" alt="Juwariyah">
-                </div>
-
-                <div class="guru-info">
-                    <h3>Juwariyah, S.Pd</h3>
-                    <span class="jabatan">Guru Mapel Bahasa Inggris</span>
-                    <p><strong>NIP:</strong> -</p>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- ================= TENAGA KEPENDIDIKAN ================= -->
-
-        <section class="staff-section">
+        <div class="container">
 
             <div class="section-title">
-                <h2>Tenaga Kependidikan</h2>
-                <p>Tenaga pendukung SD Negeri Inpres Maidei</p>
+
+                <h2>
+                    Daftar Guru
+                </h2>
+
+                <p>
+                    Guru dan tenaga pendidik SD Negeri Inpres Maidei
+                </p>
+
             </div>
+
 
             <div class="guru-grid">
 
-                <!-- PENJAGA SEKOLAH -->
+
+                <!-- KEPALA SEKOLAH -->
+
                 <div class="guru-card">
 
-                    <div class="guru-foto">
-                        <img src="yanwillem.jpg" alt="Yanwillem Rery">
+                    <div class="guru-photo">
+                        <span>👤</span>
                     </div>
 
                     <div class="guru-info">
-                        <h3>Yanwillem Rery</h3>
-                        <span class="jabatan">Penjaga Sekolah</span>
-                        <p><strong>NIP:</strong> -</p>
+
+                        <h3>
+                            Deni Eko Wahyu, S.Pd,.M.Pd
+                        </h3>
+
+                        <div class="line"></div>
+
+                        <div class="jabatan">
+                            Kepala Sekolah
+                        </div>
+
+                        <p>
+                            SD Negeri Inpres Maidei
+                        </p>
+
                     </div>
 
                 </div>
 
 
-                <!-- OPERATOR -->
+                <!-- GURU KELAS I -->
+
                 <div class="guru-card">
 
-                    <div class="guru-foto">
-                        <img src="operator.jpg" alt="Operator Sekolah">
+                    <div class="guru-foto circle-photo">
+
+                        <!-- GANTI # DENGAN FOTO NANTI -->
+                        <!-- Contoh: minatin.jpg -->
+
+                        <img
+                            src="#"
+                            alt="Minatin Widiyawati">
+
                     </div>
 
                     <div class="guru-info">
-                        <h3>Nama Operator</h3>
-                        <span class="jabatan">Operator Sekolah</span>
-                        <p><strong>NIP:</strong> -</p>
+
+                        <h3>
+                            Minatin Widiyawati, S.Pd.I
+                        </h3>
+
+                        <h5>
+                            NIP: 198609282009092001
+                        </h5>
+
+                        <div class="line"></div>
+
+                        <div class="jabatan">
+                            Guru Kelas I
+                        </div>
+
+                        <p>
+                            SD Negeri Inpres Maidei
+                        </p>
+
                     </div>
 
                 </div>
 
 
-                <!-- ADMINISTRASI -->
+                <!-- GURU KELAS II -->
+
                 <div class="guru-card">
 
-                    <div class="guru-foto">
-                        <img src="admin.jpg" alt="Tenaga Administrasi">
+                    <div class="guru-foto circle-photo">
+
+                        <img
+                            src="irma.jpg"
+                            alt="Irma Indah Lestari">
+
                     </div>
 
                     <div class="guru-info">
-                        <h3>Nama Tenaga Administrasi</h3>
-                        <span class="jabatan">Tenaga Administrasi</span>
-                        <p><strong>NIP:</strong> -</p>
+
+                        <h3>
+                            Irma Indah Lestari, S.Pd.I
+                        </h3>
+
+                        <h5>
+                            NIP: 199009062024062001
+                        </h5>
+
+                        <div class="line"></div>
+
+                        <div class="jabatan">
+                            Guru Kelas II
+                        </div>
+
+                        <p>
+                            SD Negeri Inpres Maidei
+                        </p>
+
                     </div>
 
                 </div>
+
+
+                <!-- GURU KELAS III -->
+
+                <div class="guru-card">
+
+                    <div class="guru-foto circle-photo">
+
+                        <img
+                            src="mujiono.jpg"
+                            alt="Mujiono">
+
+                    </div>
+
+                    <div class="guru-info">
+
+                        <h3>
+                            Mujiono
+                        </h3>
+
+                        <h5>
+                            NIP: 197108102001031003
+                        </h5>
+
+                        <div class="line"></div>
+
+                        <div class="jabatan">
+                            Guru Kelas III
+                        </div>
+
+                        <p>
+                            SD Negeri Inpres Maidei
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GURU KELAS IV -->
+
+                <div class="guru-card">
+
+                    <div class="guru-foto circle-photo">
+
+                        <!-- NANTI GANTI DENGAN ayu.jpg -->
+
+                        <img
+                            src="#"
+                            alt="Ayu Wijiningsih">
+
+                    </div>
+
+                    <div class="guru-info">
+
+                        <h3>
+                            Ayu Wijiningsih, S.Pd.Gr
+                        </h3>
+
+                        <h5>
+                            NIP: -
+                        </h5>
+
+                        <div class="line"></div>
+
+                        <div class="jabatan">
+                            Guru Kelas IV
+                        </div>
+
+                        <p>
+                            SD Negeri Inpres Maidei
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GURU KELAS V -->
+
+                <div class="guru-card">
+
+                    <div class="guru-foto circle-photo">
+
+                        <!-- NANTI GANTI DENGAN oktania.jpg -->
+
+                        <img
+                            src="#"
+                            alt="Oktania Ilma Abriyanti">
+
+                    </div>
+
+                    <div class="guru-info">
+
+                        <h3>
+                            Oktania Ilma Abriyanti, S.Pd.Gr
+                        </h3>
+
+                        <h5>
+                            NIP: 199410052024212041
+                        </h5>
+
+                        <div class="line"></div>
+
+                        <div class="jabatan">
+                            Guru Kelas V
+                        </div>
+
+                        <p>
+                            SD Negeri Inpres Maidei
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GURU KELAS VI -->
+
+                <div class="guru-card">
+
+                    <div class="guru-foto circle-photo">
+
+                        <img
+                            src="hengky.jpg"
+                            alt="Hengky R. Ady Putra">
+
+                    </div>
+
+                    <div class="guru-info">
+
+                        <h3>
+                            Hengky R. Ady Putra, S.Pd.Gr
+                        </h3>
+
+                        <h5>
+                            NIP: 199811172024211008
+                        </h5>
+
+                        <div class="line"></div>
+
+                        <div class="jabatan">
+                            Guru Kelas VI
+                        </div>
+
+                        <p>
+                            SD Negeri Inpres Maidei
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GURU MAPEL PAI -->
+
+                <div class="guru-card">
+
+                    <div class="guru-foto circle-photo">
+
+                        <!-- NANTI GANTI DENGAN mia.jpg -->
+
+                        <img
+                            src="#"
+                            alt="Mia Widiastuti">
+
+                    </div>
+
+                    <div class="guru-info">
+
+                        <h3>
+                            Mia Widiastuti, S.Pd.Gr
+                        </h3>
+
+                        <h5>
+                            NIP: 199412222021062001
+                        </h5>
+
+                        <div class="line"></div>
+
+                        <div class="jabatan">
+                            Guru Mapel PAI
+                        </div>
+
+                        <p>
+                            SD Negeri Inpres Maidei
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GURU MAPEL PAK -->
+
+                <div class="guru-card">
+
+                    <div class="guru-foto circle-photo">
+
+                        <!-- NANTI GANTI DENGAN densemina.jpg -->
+
+                        <img
+                            src="#"
+                            alt="Densemina Robaha">
+
+                    </div>
+
+                    <div class="guru-info">
+
+                        <h3>
+                            Densemina Robaha, S.Pd
+                        </h3>
+
+                        <h5>
+                            NIP: 199101152024212042
+                        </h5>
+
+                        <div class="line"></div>
+
+                        <div class="jabatan">
+                            Guru Mapel PAK
+                        </div>
+
+                        <p>
+                            SD Negeri Inpres Maidei
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GURU MAPEL BAHASA INGGRIS -->
+
+                <div class="guru-card">
+
+                    <div class="guru-foto circle-photo">
+
+                        <!-- NANTI GANTI DENGAN juwariyah.jpg -->
+
+                        <img
+                            src="#"
+                            alt="Juwariyah">
+
+                    </div>
+
+                    <div class="guru-info">
+
+                        <h3>
+                            Juwariyah, S.Pd
+                        </h3>
+
+                        <h5>
+                            NIP: -
+                        </h5>
+
+                        <div class="line"></div>
+
+                        <div class="jabatan">
+                            Guru Mapel Bahasa Inggris
+                        </div>
+
+                        <p>
+                            SD Negeri Inpres Maidei
+                        </p>
+
+                    </div>
+
+                </div>
+
 
             </div>
 
-        </section>
 
-    </main>
+            <!-- =========================
+                 INFORMASI
+            ========================= -->
+
+            <div class="info-box">
+
+                <h3>
+                    Tentang Tenaga Pendidik
+                </h3>
+
+                <p>
+                    Halaman ini berisi informasi mengenai guru dan
+                    tenaga kependidikan SD Negeri Inpres Maidei.
+                    Nama, foto, jabatan, dan informasi lainnya dapat
+                    disesuaikan dengan data resmi sekolah.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
 
 
-    <!-- ================= FOOTER ================= -->
+    <!-- =========================
+         TENAGA KEPENDIDIKAN
+    ========================= -->
+
+    <section class="staff-section">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    Tenaga Kependidikan
+                </h2>
+
+                <p>
+                    Mendukung pelayanan dan administrasi sekolah
+                </p>
+
+            </div>
+
+
+            <div class="staff-grid">
+
+
+                <!-- PENJAGA SEKOLAH -->
+
+                <div class="staff-card">
+
+                    <h3>
+                        Yanwillem Rery
+                    </h3>
+
+                    <p>
+                        Penjaga Sekolah
+                    </p>
+
+                </div>
+
+
+                <!-- OPERATOR SEKOLAH -->
+
+                <div class="staff-card">
+
+                    <h3>
+                        Nama Tenaga Kependidikan
+                    </h3>
+
+                    <p>
+                        Operator Sekolah
+                    </p>
+
+                </div>
+
+
+                <!-- TENAGA ADMINISTRASI -->
+
+                <div class="staff-card">
+
+                    <h3>
+                        Nama Tenaga Kependidikan
+                    </h3>
+
+                    <p>
+                        Tenaga Administrasi
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
     <footer>
+
         <p>
-            © 2026 <strong>SD Negeri Inpres Maidei</strong>.
-            Semua Hak Dilindungi.
+            © 2026 Hengky R.
+            Semua hak cipta dilindungi.
         </p>
+
     </footer>
 
 
-    <!-- ================= JAVASCRIPT ================= -->
+    <!-- =========================
+         DARK MODE
+    ========================= -->
+
+    <button
+        class="theme-toggle"
+        id="themeToggle"
+        aria-label="Ganti tema"
+        title="Ganti tema">
+
+        🌙
+
+    </button>
+
 
     <script>
-        function toggleTheme() {
-            document.body.classList.toggle("dark");
 
-            const isDark = document.body.classList.contains("dark");
+        const themeToggle =
+            document.getElementById("themeToggle");
 
-            localStorage.setItem(
-                "sdmaidei-theme",
-                isDark ? "dark" : "light"
-            );
+        const savedTheme =
+            localStorage.getItem("sdmaidei-theme");
+
+
+        if (savedTheme === "dark") {
+
+            document.body.classList.add("dark-mode");
+
+            themeToggle.textContent = "☀️";
+
+        } else {
+
+            themeToggle.textContent = "🌙";
+
         }
 
-        window.addEventListener("DOMContentLoaded", function () {
-            const theme = localStorage.getItem("sdmaidei-theme");
 
-            if (theme === "dark") {
-                document.body.classList.add("dark");
+        themeToggle.addEventListener(
+            "click",
+            function () {
+
+                document.body.classList.toggle(
+                    "dark-mode"
+                );
+
+
+                const isDark =
+                    document.body.classList.contains(
+                        "dark-mode"
+                    );
+
+
+                if (isDark) {
+
+                    localStorage.setItem(
+                        "sdmaidei-theme",
+                        "dark"
+                    );
+
+                    themeToggle.textContent = "☀️";
+
+                } else {
+
+                    localStorage.setItem(
+                        "sdmaidei-theme",
+                        "light"
+                    );
+
+                    themeToggle.textContent = "🌙";
+
+                }
+
             }
-        });
+        );
+
     </script>
 
+
 </body>
+
 </html>
 ```
