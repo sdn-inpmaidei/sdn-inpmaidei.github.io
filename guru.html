@@ -381,7 +381,9 @@
         }
 
 
-        /* FOTO GURU */
+        /* =========================
+           FOTO GURU
+        ========================= */
 
         .guru-photo,
         .guru-foto {
@@ -413,15 +415,26 @@
         }
 
 
-        /* FOTO BULAT */
+        /* =========================
+           FOTO BULAT
+           TERMASUK KEPALA SEKOLAH
+        ========================= */
 
+        .guru-photo.circle-photo img,
         .guru-foto.circle-photo img {
+
             width: 125px !important;
             height: 125px !important;
 
+            min-width: 125px;
+            min-height: 125px;
+
+            max-width: 125px;
+            max-height: 125px;
+
             object-fit: cover;
 
-            border-radius: 50%;
+            border-radius: 50% !important;
 
             border: 5px solid #ffffff;
 
@@ -430,7 +443,9 @@
         }
 
 
-        /* INFORMASI GURU */
+        /* =========================
+           INFORMASI GURU
+        ========================= */
 
         .guru-info {
             padding: 22px;
@@ -854,8 +869,12 @@
 
                 <div class="guru-card">
 
-                    <div class="guru-photo">
-                        <span>👤</span>
+                    <div class="guru-photo circle-photo">
+
+                        <img
+                            src="kepsek.jpg"
+                            alt="Deni Eko Wahyu">
+
                     </div>
 
                     <div class="guru-info">
@@ -863,6 +882,10 @@
                         <h3>
                             Deni Eko Wahyu, S.Pd,.M.Pd
                         </h3>
+
+                        <h5>
+                            NIP: 198406202021004005
+                        </h5>
 
                         <div class="line"></div>
 
@@ -884,9 +907,6 @@
                 <div class="guru-card">
 
                     <div class="guru-foto circle-photo">
-
-                        <!-- GANTI # DENGAN FOTO NANTI -->
-                        <!-- Contoh: minatin.jpg -->
 
                         <img
                             src="#"
@@ -999,8 +1019,6 @@
 
                     <div class="guru-foto circle-photo">
 
-                        <!-- NANTI GANTI DENGAN ayu.jpg -->
-
                         <img
                             src="#"
                             alt="Ayu Wijiningsih">
@@ -1037,8 +1055,6 @@
                 <div class="guru-card">
 
                     <div class="guru-foto circle-photo">
-
-                        <!-- NANTI GANTI DENGAN oktania.jpg -->
 
                         <img
                             src="#"
@@ -1114,8 +1130,6 @@
 
                     <div class="guru-foto circle-photo">
 
-                        <!-- NANTI GANTI DENGAN mia.jpg -->
-
                         <img
                             src="#"
                             alt="Mia Widiastuti">
@@ -1153,8 +1167,6 @@
 
                     <div class="guru-foto circle-photo">
 
-                        <!-- NANTI GANTI DENGAN densemina.jpg -->
-
                         <img
                             src="#"
                             alt="Densemina Robaha">
@@ -1191,8 +1203,6 @@
                 <div class="guru-card">
 
                     <div class="guru-foto circle-photo">
-
-                        <!-- NANTI GANTI DENGAN juwariyah.jpg -->
 
                         <img
                             src="#"
